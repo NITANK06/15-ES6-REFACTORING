@@ -1,0 +1,49 @@
+
+
+const loadQuestion = () => {
+
+  clearInterval(timer);
+
+  timeLeft = 15;
+
+  startTimer();
+
+  selectedOption = null;
+
+   const {
+    question,
+    options
+  } = quizQuestions[currentQuestion];
+
+  questionElement.innerText = question;
+
+  optionsContainer.innerHTML = "";
+
+  options.forEach((option, index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.classList.add("option");
+
+    button.innerText = option;
+
+    button.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".option")
+        .forEach(btn =>
+          btn.classList.remove("selected")
+        );
+
+      button.classList.add("selected");
+
+      selectedOption = index;
+
+    });
+
+    optionsContainer.appendChild(button);
+
+  });
+
+};
